@@ -1,32 +1,22 @@
 package com.ygy.service;
 
-import com.ygy.dao.userDao;
+import com.ygy.mapper.TestMapper;
 import com.ygy.model.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
+@Service
 public class userServiceDaoImpl implements userServiceDao {
-    private userDao userDao;
-
-    public void setUserDao(com.ygy.dao.userDao userDao) {
-        this.userDao = userDao;
-    }
-
-    @Override
-    public void insert(Test test) {
-        userDao.insert(test);
-    }
+    @Resource
+    private TestMapper mapper;
 
     @Override
     public Test select(int id) {
-        return (Test) userDao.select(id);
+
+        return this.mapper.selectBean(id);
     }
 
-    @Override
-    public void update(Test test) {
-        userDao.update(test);
-    }
 
-    @Override
-    public void delete(int id) {
-        userDao.delete(id);
-    }
 }

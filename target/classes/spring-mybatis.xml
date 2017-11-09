@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.ygy"/>
+    <!--配置文件-->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:db.properties"/>
+    </bean>
+
     <!--数据源-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://localhost/test?characterEncoding=utf-8"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="ygy"></property>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClass}"/>
+        <property name="url" value="${jdbc.connectionURL}"/>
+        <property name="username" value="${jdbc.userId}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="initialSize" value="${jdbc.initialSize}"/>
+        <property name="maxActive" value="${jdbc.maxActive}"/>
     </bean>
     <!--session工厂-->
-    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath:com/ygy/mapper/TestMapper.xml"/>
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="com/ygy/mapper/TestMapper.xml"/>
+    </bean>
+    <!--mapper或Dao接口 spring自动查找-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ygy.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="SqlSessionFactory"/>
     </bean>
     <!--事务管理-->
     <bean name="transactionManager"
@@ -21,11 +35,4 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="userDao" class="com.ygy.dao.userDaoImp">
-        <property name="sqlSessionFactory" ref="sessionFactory"></property>
-    </bean>
-
-    <bean id="userService" class="com.ygy.service.userServiceDaoImpl">
-        <property name="userDao" ref="userDao"/>
-    </bean>
 </beans>
