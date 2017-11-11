@@ -12,5 +12,6 @@
 </head>
 <body>
 测试！！
+${u.name}+${u.id}
 </body>
 </html>

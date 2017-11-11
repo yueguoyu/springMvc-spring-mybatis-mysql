@@ -7,7 +7,9 @@
     <mvc:annotation-driven/>
     <!--加载静态类-->
     <mvc:resources mapping="/images/**" location="/images/"/>
-    <context:component-scan base-package="com.ygy"></context:component-scan>
+    <context:component-scan base-package="com.ygy"/>
+
+
 
 <!--拦截器-->
     <mvc:interceptors>
@@ -15,15 +17,15 @@
             <!--进行拦截的  /××表示拦截所有controller-->
             <mvc:mapping path="/**"/>
             <!--不进行拦截的-->
-            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/index"/>
 
             <bean class="com.ygy.Interceptor.loginInterceptor"></bean>
         </mvc:interceptor>
-
     </mvc:interceptors>
+
     <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-
 </beans>

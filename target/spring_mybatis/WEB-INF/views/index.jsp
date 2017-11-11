@@ -1,9 +1,10 @@
 <%@ taglib prefix="mvc" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html; charset=UTF-8" %>
 <html>
 <body>
 <h2>Hello World!</h2>
-<%--@elvariable id="user" type="com.ygy.model.Test"--%>
-<mvc:form modelAttribute="user" method="post" action="s">
+<%--@elvariable id="test" type="com.ygy.model.Test"--%>
+<mvc:form modelAttribute="test" method="post" action="login">
     <table>
         <tr><h3>登录</h3></tr>
         <tr>

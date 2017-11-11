@@ -12,15 +12,18 @@ public class loginInterceptor implements HandlerInterceptor {
 //获得请求路径
         String url=request.getRequestURI();
 //        判断是否的登录
-        if (url.endsWith("/login")){
+        if (url.endsWith("/index")||url.endsWith("/login")){
             return true;
         }
 
 //根据情况编写拦截器
 //最后进入登录界面
 //        重定向
-        response.sendRedirect(request.getContextPath()+"/login");
-        return false;
+            response.sendRedirect(request.getContextPath() + "/index");
+
+
+            return false;
+
     }
 
     @Override
