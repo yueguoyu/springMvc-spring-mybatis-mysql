@@ -19,7 +19,7 @@
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.ygy.mapper" targetProject="src"/>
 
-        <table tableName="test"/>
+        <table tableName="log"/>
 
 
     </context>

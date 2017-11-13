@@ -13,5 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public interface TestMapper {
-    Test selectBean(int id);
+    Test selectId(int id);
+    void insertBean(Test test);
+    Test selectBean(Test test);
 }

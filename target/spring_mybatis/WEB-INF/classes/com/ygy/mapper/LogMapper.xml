@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ygy.mapper.LogMapper" >
+  <insert id="insertLog" parameterType="com.ygy.model.Log" >
+    insert into test.log(log, time) VALUES (#{log},#{time})
+  </insert>
+  <select id="selectBean" parameterType="com.ygy.model.Log" resultType="com.ygy.model.Log">
+    select * FROM test.log WHERE test.log.time=#{time}
+  </select>
+</mapper>

@@ -11,18 +11,18 @@
 
 
 
-<!--拦截器-->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <!--进行拦截的  /××表示拦截所有controller-->
-            <mvc:mapping path="/**"/>
-            <!--不进行拦截的-->
-            <mvc:exclude-mapping path="/"/>
-            <mvc:exclude-mapping path="/index"/>
+<!--&lt;!&ndash;拦截器&ndash;&gt;-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash;进行拦截的  /××表示拦截所有controller&ndash;&gt;-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--&lt;!&ndash;不进行拦截的&ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/"/>-->
+            <!--<mvc:exclude-mapping path="/index"/>-->
 
-            <bean class="com.ygy.Interceptor.loginInterceptor"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
+            <!--<bean class="com.ygy.Interceptor.loginInterceptor"></bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 
     <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"></property>

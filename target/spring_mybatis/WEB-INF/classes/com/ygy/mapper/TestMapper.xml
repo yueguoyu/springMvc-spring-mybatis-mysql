@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ygy.mapper.TestMapper" >
-  <select id="selectBean" parameterType="int" resultType="com.ygy.model.Test">
+  <select id="selectId" parameterType="int" resultType="com.ygy.model.Test">
     SELECT * FROM test.test
   WHERE id=#{id}
+  </select>
+  <insert id="insertBean" parameterType="com.ygy.model.Test" >
+    insert into test.test(id, name, emil) VALUES (#{id},#{name},#{emil})
+  </insert>
+  <select id="selectBean" parameterType="com.ygy.model.Test" resultType="com.ygy.model.Test">
+       SELECT password FROM test.test
+       WHERE name=#{name}
   </select>
 </mapper>

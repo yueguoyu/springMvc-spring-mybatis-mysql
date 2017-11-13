@@ -1,3 +1,4 @@
+<%@ taglib prefix="mvc" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: ygy
@@ -11,6 +12,12 @@
     <title>Title</title>
 </head>
 <body>
-testtet!!!!!
+    <%--@elvariable id="log" type="com.ygy.model.Log"--%>
+    <mvc:form method="post" action="log/select" modelAttribute="log">
+        <mvc:label path="time">time</mvc:label>
+        <mvc:input path="time"/>
+        <br/>
+        <input type="submit" value="go">
+    </mvc:form>
 </body>
 </html>

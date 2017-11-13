@@ -8,8 +8,13 @@
     <table>
         <tr><h3>登录</h3></tr>
         <tr>
-            <td><mvc:label path="id">name</mvc:label></td>
-            <td><mvc:input path="id"/>
+            <td><mvc:label path="name">name</mvc:label></td>
+            <td><mvc:input path="name"/>
+            </td>
+        </tr>
+        <tr>
+            <td><mvc:label path="password">password</mvc:label></td>
+            <td><mvc:input  path="password"/>
             </td>
         </tr>
     </table>

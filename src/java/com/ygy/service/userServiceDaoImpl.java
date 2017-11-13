@@ -15,8 +15,18 @@ public class userServiceDaoImpl implements userServiceDao {
     @Override
     public Test select(int id) {
 
-        return this.mapper.selectBean(id);
+        return this.mapper.selectId(id);
     }
 
+    @Override
+    public void insert(Test test) {
 
+        this.mapper.insertBean(test);
+
+    }
+
+    @Override
+    public Test selectBean(Test test) {
+        return this.mapper.selectBean(test);
+    }
 }
