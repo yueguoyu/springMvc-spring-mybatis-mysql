@@ -7,4 +7,7 @@
   <select id="selectBean" parameterType="com.ygy.model.Log" resultType="com.ygy.model.Log">
     select * FROM test.log WHERE test.log.time=#{time}
   </select>
+  <delete id="delet"  parameterType="com.ygy.model.Log">
+    delete FROM log WHERE log.time=#{time}
+  </delete>
 </mapper>
